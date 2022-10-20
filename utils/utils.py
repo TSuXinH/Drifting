@@ -17,7 +17,7 @@ def split_data_via_stim(data, angle_num):
 
 def separate_population_data(raw_data, detect_time, stimuli_time, classify_num):
     """
-    Separate data according to the recorded time.
+    Separates data according to the recorded time.
     Note that in this condition, the last stimulus will be deprecated.
     """
     data_list, label_list = [], []
@@ -32,7 +32,7 @@ def separate_population_data(raw_data, detect_time, stimuli_time, classify_num):
 
 
 def align_time_dimension(data_list, point_list, min_dim=0):
-    """ Align data with minimal or set stimulus interval. """
+    """ Aligns data with minimal or set stimulus interval. """
     interval = point_list[1:] - point_list[: -1]
     min_dim = np.min(interval) if min_dim == 0 else min_dim
     for idx in range(len(data_list)):
@@ -54,7 +54,7 @@ def separate_population_with_interval(raw_data, detect_time, stimuli_time, class
 
 
 def divide_data_with_bins(data, bins):
-    """ Average the data with certain bins. """
+    """ Averages the data with certain bins. """
     assert data.shape[-1] % bins == 0, 'Provided data can not be divided into equal bins.'
     if len(data.shape) == 2:
         length = int(data.shape[-1] // bins)
@@ -72,7 +72,7 @@ def divide_data_with_bins(data, bins):
 
 
 def calculate_pearson_matrix(mat1, mat2):
-    """ Calculate matrix of pearson correlation. """
+    """ Calculates matrix of pearson correlation. """
     assert mat1.shape == mat2.shape, 'the shapes of two input matrices are not the same.'
     length = mat1.shape[-1]
     pearson_matrix = np.identity(length)
